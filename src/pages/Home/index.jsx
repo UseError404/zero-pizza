@@ -1,4 +1,5 @@
-import {Sort, Categories, PizzaBlock} from "../index.jsx";
+import {Sort, Categories, PizzaBlock} from "../../components/index.jsx";
+import pizzas from '../../../public/db.json'
 
 function Home() {
     return (
@@ -10,7 +11,8 @@ function Home() {
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
-                    <PizzaBlock/>
+
+                    {pizzas.map((obj)=>(<PizzaBlock key={obj.id} {...obj}/>))}
                 </div>
             </div>
         </div>

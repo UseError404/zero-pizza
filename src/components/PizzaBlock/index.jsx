@@ -1,14 +1,14 @@
 import {Button} from "../index.jsx";
 import React from "react";
 
-function PizzaBlock({name, imageUrl, price, types, sizes}) {
-
+const PizzaBlock = React.memo(function PizzaBlock({name, imageUrl, price, types, sizes}) {
+    //Types pizza
     const typeNames = ['тонкое', 'традиционное'];
     const [activeType, setActiveType] = React.useState(types[0]);
     const onSelectTypes = (index) => {
         setActiveType(index)
     }
-
+    //Sizes pizza
     const [activeSize, setActiveSize] = React.useState(0)
     const onSelectSizes = (index) => {
         setActiveSize(index)
@@ -35,7 +35,7 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
                 <ul>
                     {sizes.map((size, index) => (
                         <li key={index}
-                            onClick={()=>onSelectSizes(index)}
+                            onClick={() => onSelectSizes(index)}
                             className={activeSize === index ? 'active' : ''}>
                             {size} см.</li>
                     ))}
@@ -47,6 +47,6 @@ function PizzaBlock({name, imageUrl, price, types, sizes}) {
             </div>
         </div>
     );
-}
+})
 
 export default PizzaBlock;

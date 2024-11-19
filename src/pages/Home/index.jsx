@@ -14,10 +14,9 @@ function Home() {
                 return res.json()
             })
             .then(json => {
-                setTimeout(() => {
-                         setPizzas(json);
-                        setIsLoading(false);
-                    }, 800)
+                setPizzas(json);
+                setIsLoading(false);
+
             })
     }, [])
 

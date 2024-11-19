@@ -4,7 +4,7 @@ import React from "react";
 const PizzaBlock = React.memo(function PizzaBlock({name, imageUrl, price, types, sizes}) {
     //Types pizza
     const typeNames = ['тонкое', 'традиционное'];
-    const [activeType, setActiveType] = React.useState(types[0]);
+    const [activeType, setActiveType] = React.useState(0);
     const onSelectTypes = (index) => {
         setActiveType(index)
     }

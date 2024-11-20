@@ -16,7 +16,7 @@ function Home() {
             .then(json => {
                 setPizzas(json);
                 setIsLoading(false);
-
+                window.scrollTo(0,0)
             })
     }, [])
 

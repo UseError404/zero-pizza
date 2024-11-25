@@ -7,3 +7,5 @@ export {default as Skeleton} from './PizzaBlock/Skeleton.jsx';
 export {default as NotFoundBlock} from './NotFoundBlock/indes.jsx';
 export {default as FillCart} from './CartContent/FillCart.jsx';
 export {default as EmptyCart} from './CartContent/EmptyCart.jsx';
+export {default as Search} from './Search';
+export {default as Pagination} from './Pagination';

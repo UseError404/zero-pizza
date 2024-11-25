@@ -1,0 +1,16 @@
+.root {
+  border: 1px solid #1a1a1a;
+  padding: 8px 15px;
+  width: 300px;
+  border-radius: 15px;
+  display: flex;
+}
+.input {
+  border: none;
+  width: 270px;
+}
+.iconSearch {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}

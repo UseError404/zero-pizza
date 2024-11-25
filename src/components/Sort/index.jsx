@@ -9,10 +9,11 @@ function Sort({sortType, onClickSort}) {
     // Filling popup
     const arrPopup = [
         {name: 'популярности Desc', sortProperty: 'rating'},
-        {name: 'популярности Asc', sortProperty: 'rating'},
+        {name: 'популярности Asc', sortProperty: '-rating'},
         {name: 'цене Desc', sortProperty: 'price'},
-        {name: 'цене Asc', sortProperty: 'price'},
-        {name: 'алфавиту Desc', sortProperty: 'name'}];
+        {name: 'цене Asc', sortProperty: '-price'},
+        {name: 'алфавиту Desc', sortProperty: 'name'},
+        {name: 'алфавиту Asc', sortProperty: '-name'}];
 
     const onSelectSort = (index) => {
         onClickSort(index);

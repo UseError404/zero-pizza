@@ -5,19 +5,23 @@ import {Header} from "./components/index.jsx";
 import {Cart, Home, NotFound} from "./pages/index.jsx";
 import {Route, Routes} from "react-router-dom";
 
+export const SearchContext = React.createContext();
+
 function App() {
-const [searchValue, setSearchValue] = React.useState('');
-console.log(searchValue)
+    const [searchValue, setSearchValue] = React.useState('');
+
     return (
         <div className="wrapper">
-            <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <SearchContext.Provider value={{searchValue, setSearchValue}}>
+            <Header/>
             <Routes>
-                <Route path='/zero-pizza/' element={<Home searchValue={searchValue}/>}/>
+                <Route path='/zero-pizza/' element={<Home/>}/>
                 <Route path='/zero-pizza/cart/' element={<Cart/>}/>
                 <Route path='*' element={<NotFound/>}/>
             </Routes>
-        </div>
-    )
+        </SearchContext.Provider>
+</div>
+)
 }
 
 export default App

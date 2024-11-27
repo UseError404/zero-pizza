@@ -1,10 +1,13 @@
 import React from "react";
 import {Sort, Categories, PizzaBlock, Skeleton, Pagination} from "../../components/index.jsx";
+import {SearchContext} from "../../App.jsx";
 
 // Array for skeleton
 const arraySkeleton = new Array(8).fill(0);
 
-function Home({searchValue}) {
+function Home() {
+    const {searchValue} = React.useContext(SearchContext);
+
     // Get data
     const [pizzas, setPizzas] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
@@ -12,6 +15,7 @@ function Home({searchValue}) {
     const [categoryId, setCategoryId] = React.useState(0);
     const [sortType, setSortType] = React.useState({name: 'популярности', sortProperty: 'rating'});
 
+    //Pagination
     const [currentPage, setCurrentPage] = React.useState(1);
 
 

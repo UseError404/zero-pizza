@@ -2,8 +2,10 @@ import React from 'react';
 import style from './style.module.scss';
 import {CiSearch} from "react-icons/ci";
 import {IoMdClose} from "react-icons/io";
+import {SearchContext} from "../../App.jsx";
 
-function Search({searchValue, setSearchValue}) {
+function Search() {
+    const {searchValue,setSearchValue} = React.useContext(SearchContext);
     return (
         <div className={style.root}>
             <input

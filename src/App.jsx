@@ -5,6 +5,7 @@ import {Header} from "./components/index.jsx";
 import {Cart, Home, NotFound} from "./pages/index.jsx";
 import {Route, Routes} from "react-router-dom";
 
+
 export const SearchContext = React.createContext();
 
 function App() {

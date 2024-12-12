@@ -1,22 +1,28 @@
 import React from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {setSort} from "../../redux/slices/filterSlice.js";
 
-function Sort({sortType, onClickSort}) {
+// Filling popup
+const arrPopup = [
+    {name: 'популярности Desc', sortProperty: 'rating'},
+    {name: 'популярности Asc', sortProperty: '-rating'},
+    {name: 'цене Desc', sortProperty: 'price'},
+    {name: 'цене Asc', sortProperty: '-price'},
+    {name: 'алфавиту Desc', sortProperty: 'name'},
+    {name: 'алфавиту Asc', sortProperty: '-name'}
+];
+
+function Sort() {
+    const dispatch = useDispatch();
+    const sort = useSelector(state => state.filter.sort)
     // Visible Popup
     const [openPopup, setOpenPopup] = React.useState(false);
     const onSelectPopup = () => {
         setOpenPopup(!openPopup);
     };
-    // Filling popup
-    const arrPopup = [
-        {name: 'популярности Desc', sortProperty: 'rating'},
-        {name: 'популярности Asc', sortProperty: '-rating'},
-        {name: 'цене Desc', sortProperty: 'price'},
-        {name: 'цене Asc', sortProperty: '-price'},
-        {name: 'алфавиту Desc', sortProperty: 'name'},
-        {name: 'алфавиту Asc', sortProperty: '-name'}];
 
-    const onSelectSort = (index) => {
-        onClickSort(index);
+    const onSelectSort = (obj) => {
+        dispatch(setSort(obj));
         setOpenPopup(false);
     }
 
@@ -37,7 +43,7 @@ function Sort({sortType, onClickSort}) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => onSelectPopup(!openPopup)}>{sortType.name}</span>
+                <span onClick={() => onSelectPopup(!openPopup)}>{sort.name}</span>
             </div>
             {openPopup && (
                 <div className="sort__popup">
@@ -45,7 +51,7 @@ function Sort({sortType, onClickSort}) {
                         {arrPopup.map((obj, index) => (
                             <li key={index}
                                 onClick={() => onSelectSort(obj)}
-                                className={sortType.sortProperty === obj.sortProperty ? 'active' : ''}>{obj.name}</li>
+                                className={sort.sortProperty === obj.sortProperty ? 'active' : ''}>{obj.name}</li>
                         ))}
                     </ul>
                 </div>

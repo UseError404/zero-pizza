@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {setSort} from "../../redux/slices/filterSlice.js";
 
 // Filling popup
-const arrPopup = [
+export const arrPopup = [
     {name: 'популярности Desc', sortProperty: 'rating'},
     {name: 'популярности Asc', sortProperty: '-rating'},
     {name: 'цене Desc', sortProperty: 'price'},
@@ -15,11 +15,23 @@ const arrPopup = [
 function Sort() {
     const dispatch = useDispatch();
     const sort = useSelector(state => state.filter.sort)
+    const sortRef = React.useRef()
+
     // Visible Popup
     const [openPopup, setOpenPopup] = React.useState(false);
     const onSelectPopup = () => {
         setOpenPopup(!openPopup);
     };
+    //закрытие popup при нажатии вне области sortRef
+    React.useEffect(() => {
+        const handClickOutside = (event) => {
+            if (sortRef.current && !sortRef.current.contains(event.target)) {
+                setOpenPopup(false);
+            }
+        }
+        document.body.addEventListener('click', handClickOutside);
+        return () => document.body.removeEventListener('click', handClickOutside);
+    }, []);
 
     const onSelectSort = (obj) => {
         dispatch(setSort(obj));
@@ -27,7 +39,7 @@ function Sort() {
     }
 
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div className="sort__label">
 
                 <svg

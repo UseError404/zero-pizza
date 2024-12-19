@@ -7,7 +7,7 @@ import {store} from './redux/store.js'
 import {Provider} from "react-redux";
 
 createRoot(document.getElementById('root')).render(
-    <StrictMode>
+   // <StrictMode>
         <BrowserRouter
             future={{v7_startTransition: true,/*7_relativeSplatPath: true,*/  }}>
 
@@ -15,5 +15,5 @@ createRoot(document.getElementById('root')).render(
                 <App/>
             </Provider>
         </BrowserRouter>
-    </StrictMode>,
+  //  </StrictMode>,
 )

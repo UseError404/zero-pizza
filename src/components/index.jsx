@@ -8,3 +8,4 @@ export {default as FillCart} from './CartContent/FillCart.jsx';
 export {default as EmptyCart} from './CartContent/EmptyCart.jsx';
 export {default as Search} from './Search';
 export {default as Pagination} from './Pagination';
+export {default as CartItem} from './CartItem';

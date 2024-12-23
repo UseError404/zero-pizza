@@ -8,8 +8,8 @@ import cart from '../../assets/img/cart.svg';
 
 function Header() {
     const {totalPrice, items} = useSelector(state => state.cart)
-
-    return (
+    const itemCount = items.reduce((sum,item) => sum + item.count, 0);
+    return(
         <div className="header">
             <div className="container">
                 <Link to='/zero-pizza/'>
@@ -27,7 +27,7 @@ function Header() {
                         <span>{totalPrice} ₽</span>
                         <div className="button__delimiter"></div>
                         <img className="cart-svg" src={cart} alt="cart"/>
-                        <span>{items.length}</span>
+                        <span>{itemCount}</span>
                     </Link>
                 </div>
             </div>

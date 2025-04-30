@@ -3,18 +3,18 @@ import debounce from 'lodash.debounce'
 import style from './style.module.scss';
 import {CiSearch} from "react-icons/ci";
 import {IoMdClose} from "react-icons/io";
-import {SearchContext} from "../../App.jsx";
+import {useDispatch} from "react-redux";
+import {setSearchValue} from "../../redux/slices/filterSlice.js";
 
 
 function Search() {
-    const {setSearchValue} = React.useContext(SearchContext);
+    const dispatch = useDispatch();
     const inputRef = React.useRef();
-
     const [searchValueLocal, setSearchValueLocal] = React.useState('')
 
     const updateSearchInput = React.useCallback(
         debounce((str) => {
-            setSearchValue(str)
+            dispatch(setSearchValue(str))
         }, 1000), []
     )
     const onChangeInput = (event) => {
@@ -35,7 +35,7 @@ function Search() {
                 {
                     searchValueLocal === '' ? <CiSearch/> : <IoMdClose onClick={() => {
                         setSearchValueLocal('');
-                        setSearchValue('')
+                        dispatch(setSearchValue(''))
                         inputRef.current.focus();
                     }}/>
                 }

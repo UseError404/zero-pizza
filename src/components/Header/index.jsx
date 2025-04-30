@@ -5,9 +5,10 @@ import './style.scss';
 
 import logo from '../../assets/img/pizza-logo.svg';
 import cart from '../../assets/img/cart.svg';
+import {selectCart} from "../../redux/slices/cartSlice.js";
 
 function Header() {
-    const {totalPrice, items} = useSelector(state => state.cart)
+    const {totalPrice, items} = useSelector(selectCart)
     const itemCount = items.reduce((sum,item) => sum + item.count, 0);
     return(
         <div className="header">
